@@ -36,7 +36,26 @@ bool puzzleSolver(const std::string& addend1, const std::string& addend2,
                   const std::string& sum,
                   std::unordered_map<char, unsigned>& mapping) {
     // TODO: Implement this
-    return {};  // This is not the correct general solution.
+    if (mapping.empty()){
+        std::string all_p_letter = addend1 + addend2 + sum;
+        unsigned current_value = 0;
+        for (char letter:all_p_letter){
+            if (mapping.count(letter) < 1){
+                mapping[letter] = current_value % 10;
+                current_value = (current_value + ) % 10;
+            }
+        }
+    }
+    if (verifySolution(addend1, addend2, sum, mapping)){
+        return true;
+    }
+    else{
+        std::unordered_map<char, unsigned>& newmap;
+        for {const auto&pair : mapping}{
+            newmap[pair.first] = (pair.second + 1) % 10;
+        }
+        puzzleSolver(addend1, addend2, sum, newmap);
+    }
 }
 
 }  // namespace shindler::ics46::project1
