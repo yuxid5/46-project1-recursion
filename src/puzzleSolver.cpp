@@ -2,6 +2,8 @@
 
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
 namespace shindler::ics46::project1 {
 
@@ -36,26 +38,26 @@ bool puzzleSolver(const std::string& addend1, const std::string& addend2,
                   const std::string& sum,
                   std::unordered_map<char, unsigned>& mapping) {
     // TODO: Implement this
-    if (mapping.empty()){
-        std::string all_p_letter = addend1 + addend2 + sum;
-        unsigned current_value = 0;
-        for (char letter:all_p_letter){
-            if (mapping.count(letter) < 1){
-                mapping[letter] = current_value % 10;
-                current_value = (current_value + ) % 10;
-            }
+    std::string all_letter = addend1 + addend2 + sum;
+    std::string all_p_letter;
+    std::vector<bool> numberTrack(10, false);
+    std::unordered_set<std::string> letter_set;
+    for (char letter:all_letter){
+        if (letter_set.find() == letter_set.end()){
+            letter_set.insert(letter)
+            all_p_letter += letter
         }
     }
+    return puzzleRecursion(0, all_p_letter, numberTrack, addend1, addend2, sum, mapping);
+}
+bool puzzleRecursion(int index, const std::string& allChars, std::unordered_map<int, bool>& numberTrack,
+                     const std::string& addend1, 
+                     const std::string& addend2,
+                     const std::string& sum,
+                     std::unordered_map<char, unsigned>& mapping){
+
     if (verifySolution(addend1, addend2, sum, mapping)){
         return true;
     }
-    else{
-        std::unordered_map<char, unsigned>& newmap;
-        for {const auto&pair : mapping}{
-            newmap[pair.first] = (pair.second + 1) % 10;
-        }
-        puzzleSolver(addend1, addend2, sum, newmap);
-    }
 }
-
 }  // namespace shindler::ics46::project1
