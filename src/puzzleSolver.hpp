@@ -23,7 +23,7 @@ bool verifySolution(
     const std::string& result,
     const std::unordered_map<char, unsigned>& mapping);
 
-bool puzzleRecursion(unsigned index, const std::string& allChars, std::vector<bool>& numberTrack,
+bool puzzleRecursion(unsigned& index, const std::string& allChars, std::vector<bool>& numberTrack,
                      const std::string& addend1, 
                      const std::string& addend2,
                      const std::string& sum,
