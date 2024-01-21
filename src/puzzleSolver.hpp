@@ -3,6 +3,8 @@
 
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
 namespace shindler::ics46::project1 {
 
@@ -16,21 +18,24 @@ namespace shindler::ics46::project1 {
  See the project 1 write-up for a better description.
  */
 
+bool verifySolution(
+    const std::string& addend1, const std::string& addend2,
+    const std::string& result,
+    const std::unordered_map<char, unsigned>& mapping);
+
+bool puzzleRecursion(unsigned index, const std::string& allChars, std::vector<bool>& numberTrack,
+                     const std::string& addend1, 
+                     const std::string& addend2,
+                     const std::string& sum,
+                     std::unordered_map<char, unsigned>& mapping);
+
+
 bool puzzleSolver(const std::string& addend1, const std::string& addend2,
                   const std::string& sum,
                   std::unordered_map<char, unsigned>& mapping);
 
 
-bool verifySolution(
-    const std::string& addend1, const std::string& addend2,
-    const std::string& result,
-    const std::unordered_map<char, unsigned>& mapping);
 }  // namespace shindler::ics46::project1
 
-bool puzzleRecursion(int index, const std::string& allChars, std::unordered_map<int, bool>& numberTrack,
-                     const std::string& addend1, 
-                     const std::string& addend2,
-                     const std::string& sum,
-                     std::unordered_map<char, unsigned>& mapping);
 
 #endif

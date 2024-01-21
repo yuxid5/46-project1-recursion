@@ -41,23 +41,36 @@ bool puzzleSolver(const std::string& addend1, const std::string& addend2,
     std::string all_letter = addend1 + addend2 + sum;
     std::string all_p_letter;
     std::vector<bool> numberTrack(10, false);
-    std::unordered_set<std::string> letter_set;
+    std::unordered_set<char> letter_set;
     for (char letter:all_letter){
-        if (letter_set.find() == letter_set.end()){
-            letter_set.insert(letter)
-            all_p_letter += letter
+        if (letter_set.find(letter) == letter_set.end()){
+            letter_set.insert(letter);
+            all_p_letter += letter;
         }
     }
     return puzzleRecursion(0, all_p_letter, numberTrack, addend1, addend2, sum, mapping);
 }
-bool puzzleRecursion(int index, const std::string& allChars, std::unordered_map<int, bool>& numberTrack,
+bool puzzleRecursion(unsigned& index, const std::string& allChars, std::vector<bool>& numberTrack,
                      const std::string& addend1, 
                      const std::string& addend2,
                      const std::string& sum,
                      std::unordered_map<char, unsigned>& mapping){
 
-    if (verifySolution(addend1, addend2, sum, mapping)){
-        return true;
+    if (index == allChars.size()){
+        return verifySolution(addend1, addend2, sum, mapping);
     }
+    char cur_char = allChars[index];
+    for (int i = 0; i<10; i++){
+        if (!numberTrack[i]){
+            mapping[cur_char] = i;
+            numberTrack[i] = true;
+            if (puzzleRecursion(index + 1, allChars, numberTrack, addend1, addend2, sum, mapping)){
+                return true;
+            }
+            numberTrack[i] = false;
+        }
+    }
+    return false;
 }
+
 }  // namespace shindler::ics46::project1
