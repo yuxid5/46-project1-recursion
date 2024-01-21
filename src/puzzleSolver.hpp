@@ -20,6 +20,11 @@ bool puzzleSolver(const std::string& addend1, const std::string& addend2,
                   const std::string& sum,
                   std::unordered_map<char, unsigned>& mapping);
 
+
+bool verifySolution(
+    const std::string& addend1, const std::string& addend2,
+    const std::string& result,
+    const std::unordered_map<char, unsigned>& mapping);
 }  // namespace shindler::ics46::project1
 
 #endif
