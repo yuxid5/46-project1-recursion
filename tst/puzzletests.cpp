@@ -115,4 +115,13 @@ TEST_CASE("Solver:LARRY-CAREER-LEGEND:ExpectNoSolution", "[Required][Solver]") {
     REQUIRE_FALSE(canBeSolved);
 }
 
+// TEST_CASE("Solver:additional1", "[Required][Solver]") {
+//     std::unordered_map<char, unsigned> puzzleMapping;
+
+//     bool canBeSolved =
+//         proj1::puzzleSolver("ABCDFEIGJ", "ABEGFHICJ", "JIHGFEDCBA", puzzleMapping);
+
+//     REQUIRE_FALSE(canBeSolved);
+// }
+
 }  // namespace

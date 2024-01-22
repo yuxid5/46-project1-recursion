@@ -48,7 +48,7 @@ bool puzzleSolver(const std::string& addend1, const std::string& addend2,
             all_p_letter += letter;
         }
     }
-    return puzzleRecursion(initial_index, all_p_letter, numberTrack, addend1, addend2, sum, mapping);
+    return puzzleRecursion(0, all_p_letter, numberTrack, addend1, addend2, sum, mapping);
 }
 bool puzzleRecursion(unsigned index, const std::string& allChars, std::vector<bool>& numberTrack,
                      const std::string& addend1, 
