@@ -41,7 +41,10 @@ bool puzzleSolver(const std::string& addend1, const std::string& addend2,
     std::string all_letter = addend1 + addend2 + sum;
     std::string all_p_letter;
     std::vector<bool> numberTrack(10, false);
-    std::unordered_set<char> letter_set;
+    std::unordered_set<char> letter_set = {addend1[addend1.length() - 1], addend2[addend2.length() - 1], sum[sum.length() - 1]};
+    for (char letter_last:letter_set){
+        all_p_letter += letter_last;
+    }
     for (char letter:all_letter){
         if (letter_set.find(letter) == letter_set.end()){
             letter_set.insert(letter);
@@ -59,6 +62,13 @@ bool puzzleRecursion(unsigned index, const std::string& allChars, std::vector<bo
     if (index == allChars.size()){
         return verifySolution(addend1, addend2, sum, mapping);
     }
+    if ((mapping.find(addend1[addend1.length()-1]) != mapping.end())
+        &&(mapping.find(addend2[addend2.length()-1]) != mapping.end())
+        &&(mapping.find(sum[sum.length()-1]) != mapping.end())){
+        if ((mapping[addend1[addend1.length()-1]] + mapping[addend2[addend2.length()-1]]) % 10 != mapping[sum[sum.length()-1]]){
+            return false;
+        }    
+    }
     char cur_char = allChars[index];
     for (int i = 0; i<10; i++){
         if (!numberTrack[i]){
@@ -67,6 +77,7 @@ bool puzzleRecursion(unsigned index, const std::string& allChars, std::vector<bo
             if (puzzleRecursion(index + 1, allChars, numberTrack, addend1, addend2, sum, mapping)){
                 return true;
             }
+            mapping.erase(cur_char);
             numberTrack[i] = false;
         }
     }
